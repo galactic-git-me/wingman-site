@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Support — Wingman</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a22;
+      --border: #252b38;
+      --accent: #4f9cf9;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+    .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
+    .topbar img { width: 32px; height: 32px; border-radius: 8px; }
+    .topbar a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 1rem; }
+    .topbar .back { color: var(--accent); font-size: 0.9rem; margin-left: auto; text-decoration: none; }
+    .content { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
+    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 20px; }
+    .contact-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 24px; margin-bottom: 40px; }
+    .contact-box p { color: var(--muted); margin-bottom: 8px; }
+    .contact-box a { color: var(--accent); font-size: 1.1rem; font-weight: 600; }
+    h2 { font-size: 1.1rem; font-weight: 600; color: var(--accent); margin: 32px 0 10px; }
+    p { color: var(--muted); margin-bottom: 12px; font-size: 0.95rem; }
+    .faq { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 8px; }
+    .faq-q { padding: 16px 20px; font-weight: 600; font-size: 0.95rem; cursor: pointer; background: var(--surface); }
+    .faq-a { padding: 0 20px 16px; color: var(--muted); font-size: 0.9rem; display: none; }
+    .faq.open .faq-a { display: block; }
+    .faq.open .faq-q { color: var(--accent); }
+    a { color: var(--accent); }
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <img src="images/logo_no_bg.jpg" alt="Wingman">
+    <a href="index.html">Wingman</a>
+    <a href="index.html" class="back">← Back</a>
+  </div>
+  <div class="content">
+    <h1>Support</h1>
+    <div class="contact-box">
+      <p>We aim to respond within 2 business days.</p>
+      <a href="mailto:support@wingman.app">support@wingman.app</a>
+    </div>
+
+    <h2>Frequently asked questions</h2>
+
+    <div class="faq">
+      <div class="faq-q">I forgot my PIN — can I recover my vault?</div>
+      <div class="faq-a">If you do not have cloud backup enabled (Pro tier) and no recovery key saved, vault contents cannot be recovered. This is by design — your PIN is the only key. If you have cloud backup enabled, you can restore from your encrypted backup after resetting the app.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">How do I cancel my subscription?</div>
+      <div class="faq-a">Subscriptions are managed through the App Store (iOS) or Google Play (Android), not through the app itself. On iOS: Settings → Apple ID → Subscriptions → Wingman → Cancel. On Android: Play Store → Account → Payments &amp; subscriptions → Wingman → Cancel.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">Can I request a refund?</div>
+      <div class="faq-a">Refunds are processed by Apple or Google. On iOS, visit <a href="https://reportaproblem.apple.com">reportaproblem.apple.com</a>. On Android, use the Google Play refund request flow. See our <a href="legal.html">Returns &amp; Refunds page</a> for full details on when we support refund requests.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">Will Wingman share my photos with anyone?</div>
+      <div class="faq-a">No. All vault contents are encrypted on your device and never transmitted to our servers. We cannot see your photos. See our <a href="privacy.html">Privacy Policy</a> for full details.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">What happens to my data if I delete the app?</div>
+      <div class="faq-a">All locally stored vault contents are permanently deleted when you remove the app. If you have Pro cloud backup enabled, your encrypted backup will remain in cloud storage until you explicitly delete it. We recommend exporting important content before deleting the app.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">My subscription is active but I can't access Pro features.</div>
+      <div class="faq-a">Try: (1) Force-close and reopen the app. (2) Go to Settings → Restore Purchases inside the app. (3) Ensure you're signed in with the same Apple ID or Google account used to subscribe. If the problem persists, email us at support@wingman.app and include your order ID from the App Store or Play Store receipt.</div>
+    </div>
+
+    <div class="faq">
+      <div class="faq-q">Is Wingman available on iPad or tablet?</div>
+      <div class="faq-a">Wingman is available on iOS (iPhone and iPad, iOS 15+) and Android (10+). The same subscription covers all your devices signed in with the same account.</div>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2026 Wingman / Envelope Group. &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="legal.html">Legal</a></p>
+  </footer>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(q => {
+      q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+    });
+  </script>
+</body>
+</html>

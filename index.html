@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wingman — Privacy Vault App</title>
+  <style>
+    :root {
+      --bg: #0d0f14;
+      --surface: #161a22;
+      --border: #252b38;
+      --accent: #4f9cf9;
+      --accent2: #7c5cfc;
+      --text: #e2e8f0;
+      --muted: #8892a4;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+    .hero { text-align: center; padding: 80px 24px 60px; background: linear-gradient(160deg, #0d0f14 0%, #111520 100%); border-bottom: 1px solid var(--border); }
+    .logo { width: 80px; height: 80px; border-radius: 20px; margin-bottom: 24px; }
+    .hero h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
+    .hero p { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
+    .nav { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
+    .nav a { display: inline-block; padding: 10px 22px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.9rem; transition: border-color 0.2s; }
+    .nav a:hover { border-color: var(--accent); }
+    .main { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
+    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; }
+    .card h2 { font-size: 1.2rem; color: var(--accent); margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
+    footer a { color: var(--accent); text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <img src="images/logo_no_bg.jpg" alt="Wingman logo" class="logo">
+    <h1>Wingman</h1>
+    <p>Your phone knows too much. Wingman fixes that.</p>
+    <nav class="nav">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="legal.html">Returns, Refunds &amp; Warranty</a>
+      <a href="support.html">Support</a>
+    </nav>
+  </div>
+  <div class="main">
+    <div class="card">
+      <h2>Privacy-first vault</h2>
+      <p>All encryption happens locally on your device. We never see your photos, files, or messages. Not us, not anyone.</p>
+    </div>
+    <div class="card">
+      <h2>Biometric &amp; PIN protected</h2>
+      <p>Face ID, Touch ID, or a PIN keep your vault locked. A Duress PIN silently hides sensitive albums if you're under pressure.</p>
+    </div>
+    <div class="card">
+      <h2>Flexible subscriptions</h2>
+      <p>Free to start. Plus and Pro plans unlock unlimited vault size, AI scanning, Intruder Snapshot, and cloud backup. Cancel any time in the App Store or Google Play settings.</p>
+    </div>
+  </div>
+  <footer>
+    <p>&copy; 2026 Wingman. All rights reserved. &nbsp;|&nbsp; <a href="privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="legal.html">Legal</a> &nbsp;|&nbsp; <a href="support.html">Support</a></p>
+  </footer>
+</body>
+</html>
