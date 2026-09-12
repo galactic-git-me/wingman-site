@@ -1,109 +1,76 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Wingman privacy policy">
   <title>Privacy Policy — Wingman</title>
   <style>
-    :root {
-      --bg: #0d0f14;
-      --surface: #161a22;
-      --border: #252b38;
-      --accent: #4f9cf9;
-      --text: #e2e8f0;
-      --muted: #8892a4;
-      --radius: 12px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
-    .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 12px; }
-    .topbar img { width: 32px; height: 32px; border-radius: 8px; }
-    .topbar a { color: var(--text); text-decoration: none; font-weight: 600; font-size: 1rem; }
-    .topbar .back { color: var(--accent); font-size: 0.9rem; margin-left: auto; text-decoration: none; }
-    .content { max-width: 720px; margin: 0 auto; padding: 48px 24px 80px; }
-    h1 { font-size: 2rem; font-weight: 700; margin-bottom: 6px; }
-    .updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 40px; }
-    .summary-box { background: var(--surface); border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; margin-bottom: 40px; }
-    .summary-box p { color: var(--muted); font-size: 0.95rem; }
-    h2 { font-size: 1.15rem; font-weight: 600; color: var(--accent); margin: 36px 0 10px; }
-    p { color: var(--muted); margin-bottom: 12px; font-size: 0.95rem; }
-    ul { color: var(--muted); font-size: 0.95rem; padding-left: 20px; margin-bottom: 12px; }
-    ul li { margin-bottom: 6px; }
-    a { color: var(--accent); }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
-    footer a { color: var(--accent); text-decoration: none; }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    :root{--bg:#0b0d0f;--panel:#14191a;--line:#283031;--lime:#a6d537;--text:#f5f7f3;--muted:#b1bbb9}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.68 "DM Sans",sans-serif}.top{height:76px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(24px,calc((100% - 920px)/2));}.brand{font:700 1rem "Space Grotesk";letter-spacing:.08em;text-decoration:none;color:var(--text)}.brand:before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--lime);margin-right:9px;box-shadow:0 0 16px var(--lime)}.back{color:var(--lime);text-decoration:none;font-weight:700;font-size:.9rem}.page{max-width:790px;margin:auto;padding:66px 24px 95px}h1,h2{font-family:"Space Grotesk";letter-spacing:-.035em}h1{font-size:clamp(2.5rem,7vw,4.6rem);line-height:.95;margin:0 0 10px}.updated{color:#8e9996;margin:0 0 42px}.notice{padding:22px 24px;border:1px solid rgba(166,213,55,.44);border-radius:15px;background:linear-gradient(120deg,rgba(166,213,55,.11),rgba(166,213,55,.025));margin-bottom:48px}.notice strong{color:var(--lime)}h2{font-size:1.35rem;margin:43px 0 11px;color:var(--lime)}p,li{color:var(--muted)}p{margin:0 0 15px}ul{padding-left:23px;margin:0 0 17px}li{padding-left:5px;margin:7px 0}a{color:var(--lime)}.table{border:1px solid var(--line);border-radius:14px;overflow:auto;margin:22px 0}.table table{width:100%;border-collapse:collapse;min-width:600px}.table th,.table td{text-align:left;padding:14px 15px;vertical-align:top;border-bottom:1px solid var(--line);color:var(--muted);font-size:.9rem}.table th{color:var(--text);background:var(--panel);font-weight:700}.table tr:last-child td{border:0}.foot{padding:25px;text-align:center;border-top:1px solid var(--line);color:#8e9996;font-size:.84rem}.foot a{margin:0 6px}@media(max-width:520px){.page{padding-top:46px}.top{padding:0 16px}}
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <img src="images/logo_no_bg.jpg" alt="Wingman">
-    <a href="index.html">Wingman</a>
-    <a href="index.html" class="back">← Back</a>
-  </div>
-  <div class="content">
+  <header class="top"><a class="brand" href="/">WINGMAN</a><a class="back" href="/">← Home</a></header>
+  <main class="page">
     <h1>Privacy Policy</h1>
-    <p class="updated">Last updated: 21 June 2026</p>
+    <p class="updated">Last updated: 2 September 2026</p>
+    <div class="notice"><strong>The short version:</strong> Wingman is designed as a local-first private-media vault. Your selected photos and videos are stored and encrypted on your device. We do not sell personal information or use advertising trackers.</div>
 
-    <div class="summary-box">
-      <p><strong>Plain English summary:</strong> Wingman is a local-first app. Your vault contents — photos, files, notes — are encrypted on your device and never transmitted to our servers. We do not sell, share, or see your personal data. The only external service involved in the core app is RevenueCat, which manages your subscription; it receives only anonymised subscription metadata, not vault contents.</p>
-    </div>
+    <h2>1. Who this policy covers</h2>
+    <p>This policy explains how Wingman (“Wingman”, “we”, “us”, or “our”) handles information when you use the Wingman mobile app and this website. For privacy questions or requests, email <a href="mailto:support@theflipflop.shop">support@theflipflop.shop</a> with “Wingman privacy” in the subject line.</p>
 
-    <h2>1. Who we are</h2>
-    <p>Wingman is developed and operated by Envelope Group ("we", "us", "our"). If you have questions about this policy, contact us at <a href="mailto:privacy@wingman.app">privacy@wingman.app</a>.</p>
-
-    <h2>2. What data Wingman collects</h2>
-    <p>Wingman is designed to collect as little data as possible.</p>
+    <h2>2. Information handled on your device</h2>
+    <p>Wingman requests access only when needed for features you choose to use. The following information is handled locally on your device:</p>
     <ul>
-      <li><strong>Vault contents (photos, videos, files, notes):</strong> Stored exclusively on your device, encrypted with AES-256-GCM. We have no access to these at any time.</li>
-      <li><strong>Biometric data (Face ID / Touch ID):</strong> Handled entirely by your device's operating system. Wingman never receives or stores biometric data.</li>
-      <li><strong>PIN:</strong> Stored locally in your device's secure enclave. Never transmitted.</li>
-      <li><strong>Subscription status:</strong> Managed by RevenueCat. This includes your anonymised user ID, subscription tier (Free / Plus / Pro), and transaction identifiers. RevenueCat does not receive your vault contents. See <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">RevenueCat's Privacy Policy</a>.</li>
-      <li><strong>App crash data:</strong> If you opt in, anonymous crash reports may be collected to help us fix bugs. No vault content is ever included.</li>
+      <li><strong>Photos and videos you select:</strong> used to show, import, protect, and manage your private media vault.</li>
+      <li><strong>Vault security data:</strong> your PIN is not sent to us. Wingman stores local security material needed to protect access to the vault.</li>
+      <li><strong>Camera images:</strong> if you allow camera access and use the intruder-capture protection feature, Wingman can take a photo following failed unlock attempts. That image is stored locally in the app.</li>
+      <li><strong>Notification preferences:</strong> used to deliver device notifications if you enable them.</li>
+    </ul>
+    <p>We do not operate a service that receives, reads, or stores your vault photos or videos. Removing the app may remove local app data; make sure you understand the app’s current export or recovery options before deleting it.</p>
+
+    <h2>3. Information received by service providers</h2>
+    <p>Wingman uses limited third-party services to provide subscriptions and, if configured in a release, diagnose app failures. Those providers may process limited technical or purchase information under their own policies.</p>
+    <div class="table"><table><thead><tr><th>Service</th><th>Purpose</th><th>Information involved</th></tr></thead><tbody>
+      <tr><td>RevenueCat</td><td>Subscription entitlement and purchase management</td><td>Anonymous app user identifier, product/entitlement status, purchase and transaction information supplied by the app store. No vault content is sent.</td></tr>
+      <tr><td>Apple App Store / Google Play</td><td>Distribution and payment processing</td><td>Purchase, account, and payment information they handle under their own privacy policies. Wingman does not receive your full payment-card details.</td></tr>
+      <tr><td>Sentry (only when enabled in a release)</td><td>Crash and error diagnostics</td><td>Technical diagnostic information such as device/OS details, app version, timestamps, and error stack traces. Vault media is not intentionally sent.</td></tr>
+    </tbody></table></div>
+    <p>RevenueCat’s privacy policy is available at <a href="https://www.revenuecat.com/privacy/" rel="noopener noreferrer" target="_blank">revenuecat.com/privacy</a>. Store processing is governed by <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer" target="_blank">Apple’s policy</a> and <a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Google’s policy</a>.</p>
+
+    <h2>4. Information we do not collect for advertising</h2>
+    <ul>
+      <li>We do not sell personal information.</li>
+      <li>We do not use advertising SDKs or cross-app advertising tracking.</li>
+      <li>We do not collect precise location, contacts, SMS messages, browsing history, or biometric templates.</li>
+      <li>We do not intentionally upload your vault photos or videos to our servers.</li>
     </ul>
 
-    <h2>3. What data we do NOT collect</h2>
+    <h2>5. Permissions</h2>
+    <p>Android and iOS permissions are requested by the app or operating system. You can deny or revoke permissions in device settings; doing so can limit the corresponding feature.</p>
     <ul>
-      <li>Your vault contents (photos, videos, files, notes, messages)</li>
-      <li>Your name, email address, or contact details (unless you contact support)</li>
-      <li>Your location</li>
-      <li>Advertising identifiers (IDFA / GAID)</li>
-      <li>Browsing history or cross-app tracking data</li>
+      <li><strong>Photos and videos:</strong> to let you select and manage media you choose for Wingman.</li>
+      <li><strong>Camera:</strong> only for the optional intruder-capture protection feature.</li>
+      <li><strong>Notifications:</strong> to show notifications if enabled.</li>
+      <li><strong>Background/boot access on Android:</strong> to support app features such as scheduled notification behaviour where supported by your device.</li>
     </ul>
 
-    <h2>4. How encryption works</h2>
-    <p>All vault contents are encrypted locally on your device using AES-256-GCM before storage. The encryption key is derived from your PIN or biometric authentication and never leaves your device. This means:</p>
-    <ul>
-      <li>We cannot decrypt your vault even if compelled to do so.</li>
-      <li>If you forget your PIN and have no recovery method set up, vault contents cannot be recovered.</li>
-    </ul>
+    <h2>6. Retention and deletion</h2>
+    <p>Local vault data remains on your device until you remove it in the app or uninstall the app. Subscription providers and app stores retain purchase records according to their policies and legal obligations. Technical diagnostics, if Sentry is enabled, are retained according to the project’s configured retention period.</p>
 
-    <h2>5. Third-party services</h2>
-    <p><strong>RevenueCat</strong> — subscription management. Receives anonymised user IDs and subscription transaction data. No vault content. <a href="https://www.revenuecat.com/privacy/" target="_blank" rel="noopener">Privacy policy →</a></p>
-    <p><strong>Apple App Store / Google Play</strong> — app distribution and payment processing. Their own privacy policies apply to any payment data.</p>
-    <p>We do not use advertising networks, analytics SDKs, or social media trackers.</p>
-
-    <h2>6. Data retention</h2>
-    <p>Because vault contents are stored only on your device, deleting the app removes all local data. RevenueCat retains anonymised subscription records as required by their own policy and applicable law.</p>
-
-    <h2>7. Your rights</h2>
-    <p>Depending on your location, you may have rights to access, correct, or delete personal data we hold about you. Because we hold very little identifying data, most requests can be fulfilled by:</p>
-    <ul>
-      <li>Deleting the app to remove all local vault data</li>
-      <li>Contacting us at <a href="mailto:privacy@wingman.app">privacy@wingman.app</a> to request deletion of any support correspondence or RevenueCat account data</li>
-    </ul>
-    <p>EU/EEA users have rights under GDPR. UK users have rights under UK GDPR. California residents have rights under CCPA. We honour all such requests.</p>
+    <h2>7. Your rights and choices</h2>
+    <p>Depending on where you live, you may have rights to request access, correction, deletion, restriction, objection, or portability for personal information we control. You can delete local media in the app and revoke permissions through your device settings. For information held by service providers (such as a store purchase record), their privacy tools may also apply. Contact us at <a href="mailto:support@theflipflop.shop">support@theflipflop.shop</a> for assistance.</p>
 
     <h2>8. Children</h2>
-    <p>Wingman is not directed at children under 13 (or 16 in the EU). We do not knowingly collect personal data from children. If you believe a child has provided us with personal data, contact us and we will delete it promptly.</p>
+    <p>Wingman is not directed to children under 13, or the minimum age required in their country. We do not knowingly collect personal information from children. If you believe a child has provided us personal information, contact us so we can review and address the request.</p>
 
-    <h2>9. Changes to this policy</h2>
-    <p>We may update this policy from time to time. Material changes will be notified via an in-app notice. The "Last updated" date at the top of this page will always reflect the current version.</p>
+    <h2>9. Security</h2>
+    <p>We use a local-first design and technical safeguards intended to protect the app’s private-media features. No system is perfectly secure, and you are responsible for keeping your device, PIN, and account credentials protected.</p>
 
-    <h2>10. Contact</h2>
-    <p>For privacy questions or data requests: <a href="mailto:privacy@wingman.app">privacy@wingman.app</a></p>
-  </div>
-  <footer>
-    <p>&copy; 2026 Wingman / Envelope Group. &nbsp;|&nbsp; <a href="index.html">Home</a> &nbsp;|&nbsp; <a href="legal.html">Legal</a> &nbsp;|&nbsp; <a href="support.html">Support</a></p>
-  </footer>
+    <h2>10. Changes to this policy</h2>
+    <p>We may update this policy as Wingman changes. We will update the date at the top of this page and, where required, provide additional notice in the app.</p>
+  </main>
+  <footer class="foot">© 2026 Wingman · <a href="/">Home</a> · <a href="/support.html">Support</a></footer>
 </body>
 </html>

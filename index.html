@@ -1,64 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wingman — Privacy Vault App</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Wingman is a private, encrypted vault for the photos and videos you want kept out of sight.">
+  <meta name="theme-color" content="#0b0d0f">
+  <link id="site-favicon" rel="icon" type="image/png" href="images/favicon-wing-rest.png">
+  <link rel="apple-touch-icon" href="images/favicon-wing-rest.png">
+  <title>Wingman — Your partner in privacy</title>
   <style>
-    :root {
-      --bg: #0d0f14;
-      --surface: #161a22;
-      --border: #252b38;
-      --accent: #4f9cf9;
-      --accent2: #7c5cfc;
-      --text: #e2e8f0;
-      --muted: #8892a4;
-      --radius: 12px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
-    .hero { text-align: center; padding: 80px 24px 60px; background: linear-gradient(160deg, #0d0f14 0%, #111520 100%); border-bottom: 1px solid var(--border); }
-    .logo { width: 80px; height: 80px; border-radius: 20px; margin-bottom: 24px; }
-    .hero h1 { font-size: 2.4rem; font-weight: 700; letter-spacing: -0.5px; }
-    .hero p { color: var(--muted); font-size: 1.1rem; margin-top: 10px; }
-    .nav { display: flex; gap: 16px; justify-content: center; margin-top: 32px; flex-wrap: wrap; }
-    .nav a { display: inline-block; padding: 10px 22px; border-radius: 8px; background: var(--surface); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.9rem; transition: border-color 0.2s; }
-    .nav a:hover { border-color: var(--accent); }
-    .main { max-width: 720px; margin: 0 auto; padding: 60px 24px; }
-    .card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 32px; margin-bottom: 20px; }
-    .card h2 { font-size: 1.2rem; color: var(--accent); margin-bottom: 8px; }
-    .card p { color: var(--muted); font-size: 0.95rem; }
-    footer { text-align: center; padding: 32px 24px; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.85rem; }
-    footer a { color: var(--accent); text-decoration: none; }
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+    :root{--ink:#0b0d0f;--panel:#13171a;--line:rgba(255,255,255,.12);--soft:#aab2b5;--lime:#a6d537;--lime2:#d3ff68;--white:#f6f8f4}
+    *{box-sizing:border-box} html{scroll-behavior:smooth;overflow-x:hidden} body{margin:0;background:var(--ink);color:var(--white);font-family:"DM Sans",sans-serif;overflow-x:hidden}
+    .scroll-meter{position:fixed;z-index:20;top:0;left:0;width:100%;height:3px;background:rgba(255,255,255,.08)}.scroll-meter span{display:block;width:calc(var(--scroll,0) * 100%);height:100%;background:var(--lime);box-shadow:0 0 16px var(--lime);transform-origin:left}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.3;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(#000,transparent 75%)} 
+    .aurora{position:absolute;inset:-30% -20% auto;height:760px;pointer-events:none;filter:blur(68px);opacity:.42;background:radial-gradient(circle at 45% 45%,#a6d537 0 7%,transparent 25%),radial-gradient(circle at 75% 20%,#507315 0,transparent 25%),radial-gradient(circle at 15% 30%,#203f22 0,transparent 28%);animation:drift 16s ease-in-out infinite alternate}
+    @keyframes drift{to{transform:translate3d(8%,5%,0) rotate(8deg);filter:blur(84px)}} 
+    a{color:inherit;text-decoration:none}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.nav{height:88px;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:2}.brand{display:flex;align-items:center;gap:10px;font-family:"Space Grotesk";font-weight:700;letter-spacing:.06em}.brand-dot{width:12px;height:12px;border-radius:99px;background:var(--lime);box-shadow:0 0 20px var(--lime)}.navlinks{display:flex;gap:25px;align-items:center;color:#c5cbca;font-size:.92rem}.navlinks a:hover{color:var(--lime)}.mini-cta,.cta{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--lime);color:#11170b;border-radius:999px;font-weight:700;transition:.25s transform,.25s box-shadow}.mini-cta{padding:10px 17px}.cta{padding:15px 22px;font-size:1rem}.cta:hover,.mini-cta:hover{transform:translateY(-2px);box-shadow:0 15px 36px rgba(166,213,55,.23)}
+    .hero{min-height:710px;position:relative;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:20px;padding:68px 0 82px}.eyebrow{color:var(--lime2);text-transform:uppercase;letter-spacing:.15em;font-size:.74rem;font-weight:700;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:34px;height:1px;background:currentColor}.hero h1,.section-title{font-family:"Space Grotesk";letter-spacing:-.055em}.hero h1{font-size:clamp(3.25rem,7vw,6.6rem);line-height:.91;max-width:750px;margin:22px 0}.lime{color:var(--lime)}.hero p{color:#bdc5c4;max-width:540px;font-size:1.12rem;line-height:1.65;margin:0 0 30px}.hero-actions{display:flex;gap:13px;align-items:center;flex-wrap:wrap}.text-link{font-weight:600;color:#d7dddd}.text-link:hover{color:var(--lime)}.hero-art{position:relative;height:530px;display:grid;place-items:center;isolation:isolate}.hero-art:before{content:"W";position:absolute;z-index:-1;font:700 34rem/.7 "Space Grotesk";color:rgba(166,213,55,.075);transform:translateY(calc(var(--hero-shift,0) * -1px));transition:transform .15s linear}.hero-mark{position:absolute;width:min(430px,92%);filter:drop-shadow(0 35px 45px rgba(0,0,0,.45));animation:float 6s ease-in-out infinite;transform:translate3d(0,calc(var(--hero-shift,0) * .32px),0)}.orbit{position:absolute;border:1px solid rgba(166,213,55,.22);border-radius:50%;width:430px;height:430px;animation:spin 19s linear infinite;transform:translate3d(0,calc(var(--hero-shift,0) * -.18px),0)}.orbit:after{content:"";position:absolute;width:9px;height:9px;border-radius:50%;background:var(--lime);top:54px;left:28px;box-shadow:0 0 18px 4px var(--lime)}@keyframes spin{to{transform:rotate(360deg)}}@keyframes float{50%{transform:translateY(-13px)}}.signal{position:absolute;background:rgba(16,19,20,.82);border:1px solid var(--line);backdrop-filter:blur(10px);padding:12px 15px;border-radius:12px;box-shadow:0 20px 40px rgba(0,0,0,.24);font-size:.76rem}.signal strong{display:block;color:var(--lime);font-family:"Space Grotesk";font-size:.85rem;margin-bottom:3px}.signal.a{left:0;top:112px}.signal.b{right:5px;bottom:104px}.pulse{display:inline-block;width:7px;height:7px;background:var(--lime);border-radius:50%;margin-right:5px;animation:pulse 1.6s infinite}@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(166,213,55,0)}}
+    .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:19px 0;color:#cbd2cf;overflow:hidden}.strip-in{display:flex;justify-content:space-between;gap:28px;white-space:nowrap;font-weight:600;font-size:.9rem}.strip-in span:before{content:"✦";color:var(--lime);margin-right:9px}
+    section{padding:125px 0}.intro{display:grid;grid-template-columns:.75fr 1.25fr;gap:70px;align-items:end}.section-label{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--lime);font-weight:700}.section-title{font-size:clamp(2.4rem,5vw,4.65rem);line-height:.98;margin:15px 0 0}.section-copy{max-width:580px;color:var(--soft);font-size:1.08rem;line-height:1.7}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:50px}.card{background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(255,255,255,.018));border:1px solid var(--line);border-radius:18px;padding:29px;min-height:242px;transition:.35s transform,.35s border-color}.card:hover{transform:translateY(-7px);border-color:rgba(166,213,55,.65)}.card svg{width:29px;height:29px;fill:none;stroke:var(--lime);stroke-width:1.7}.card h3{font-family:"Space Grotesk";font-size:1.2rem;margin:28px 0 9px}.card p{color:var(--soft);font-size:.94rem;line-height:1.6;margin:0}
+    .vault-story{padding:0;background:linear-gradient(180deg,#0b0d0f,#101416 48%,#0b0d0f)}.vault-stage{min-height:190vh;position:relative}.vault-sticky{position:sticky;top:0;min-height:100vh;display:grid;grid-template-columns:.8fr 1.2fr;align-items:center;gap:7vw;overflow:hidden}.vault-copy{max-width:450px}.vault-copy .section-title{margin-bottom:20px}.vault-copy p{color:var(--soft);line-height:1.65}.vault-object{height:min(70vh,620px);position:relative;display:grid;place-items:center}.vault-gateway{position:relative;width:min(52vw,600px);aspect-ratio:1;display:grid;place-items:center;perspective:1200px}.vault-core{position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,#26340e 0%,#121b10 36%,#050707 68%);box-shadow:inset 0 0 0 2px rgba(166,213,55,.25),inset 0 0 80px rgba(166,213,55,.16),0 0 100px rgba(166,213,55,calc(var(--vault,0) * .22));overflow:hidden}.vault-core:before{content:"";position:absolute;inset:15%;border:1px solid rgba(166,213,55,.45);border-radius:50%;box-shadow:0 0 35px rgba(166,213,55,.26)}.vault-logo{position:relative;z-index:2;width:78%;filter:drop-shadow(0 30px 42px rgba(0,0,0,.55));transform:scale(calc(.7 + var(--vault,0) * .3)) rotate(calc((1 - var(--vault,0)) * -8deg));transition:transform .08s linear}.vault-door{position:absolute;z-index:3;top:1%;width:53%;height:98%;overflow:hidden;background:linear-gradient(135deg,#293134,#111618 46%,#070909);border:2px solid rgba(220,240,239,.24);box-shadow:inset 0 0 0 12px rgba(0,0,0,.28),inset 0 0 55px rgba(255,255,255,.06),0 18px 40px rgba(0,0,0,.48);transition:transform .08s linear}.vault-door:before{content:"";position:absolute;inset:9%;border-radius:50%;border:2px solid rgba(166,213,55,.42);box-shadow:inset 0 0 0 12px rgba(0,0,0,.22),0 0 18px rgba(166,213,55,.15)}.vault-door:after{content:"";position:absolute;width:18%;aspect-ratio:1;border-radius:50%;top:40%;background:radial-gradient(circle at 35% 35%,#d3ff68 0 5%,#5a7425 7% 19%,#11170b 21% 62%,#020303 64%);border:2px solid rgba(166,213,55,.6);box-shadow:0 0 24px rgba(166,213,55,.28)}.vault-door.left{left:0;border-radius:50% 0 0 50%;transform-origin:left center;transform:translateX(calc(var(--vault,0) * -76%)) rotateY(calc(var(--vault,0) * 46deg))}.vault-door.right{right:0;border-radius:0 50% 50% 0;transform-origin:right center;transform:translateX(calc(var(--vault,0) * 76%)) rotateY(calc(var(--vault,0) * -46deg))}.vault-door.left:after{right:10%}.vault-door.right:after{left:10%}.vault-seam{position:absolute;z-index:4;top:14%;bottom:14%;width:2px;background:linear-gradient(transparent,var(--lime),transparent);box-shadow:0 0 18px var(--lime);opacity:calc(1 - var(--vault,0));transition:opacity .08s linear}.vault-readout{position:absolute;right:0;bottom:12%;border:1px solid var(--line);background:rgba(11,13,15,.8);backdrop-filter:blur(12px);padding:13px 16px;border-radius:12px;color:#bac2bf;font-size:.78rem}.vault-readout b{color:var(--lime);display:block;font-family:"Space Grotesk";letter-spacing:.05em;margin-bottom:3px}.showcase{background:#101416;border-block:1px solid var(--line)}.screens{display:grid;grid-template-columns:1fr .83fr 1fr;gap:20px;align-items:center;margin-top:53px}.shot{background:#050606;border:1px solid var(--line);border-radius:28px;padding:10px;box-shadow:0 28px 55px rgba(0,0,0,.32);overflow:hidden}.shot img{display:block;width:100%;border-radius:20px}.shot:nth-child(2){transform:translateY(-35px);border-color:rgba(166,213,55,.55)}.shot small{display:block;color:var(--soft);padding:13px 5px 4px;font-size:.74rem}.video-wrap{margin-top:92px;border-radius:24px;overflow:hidden;border:1px solid rgba(166,213,55,.35);position:relative;background:#050606}.video-wrap:before{content:"Product walkthrough";position:absolute;z-index:1;top:17px;left:19px;background:rgba(11,13,15,.74);border:1px solid var(--line);padding:8px 12px;border-radius:99px;font-size:.75rem;font-weight:700;backdrop-filter:blur(8px)}video{display:block;width:100%;max-height:670px;object-fit:cover}.motion-window{margin-top:42px;display:grid;grid-template-columns:.76fr 1.24fr;align-items:stretch;min-height:410px;border:1px solid var(--line);border-radius:25px;overflow:hidden;background:#050606}.motion-copy{padding:clamp(28px,5vw,64px);display:flex;justify-content:center;flex-direction:column;background:radial-gradient(circle at bottom left,rgba(166,213,55,.2),transparent 45%)}.motion-copy h3{font:600 clamp(1.8rem,3vw,3rem)/1 "Space Grotesk";letter-spacing:-.05em;margin:12px 0}.motion-copy p{color:var(--soft);line-height:1.65;margin:0}.motion-window video{height:100%;min-height:410px;max-height:none}
+    .how{display:grid;grid-template-columns:1fr 1fr;gap:90px}.steps{border-top:1px solid var(--line);margin-top:27px}.step{display:grid;grid-template-columns:55px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--line)}.n{font-family:"Space Grotesk";font-size:1.4rem;color:var(--lime)}.step h3{margin:0 0 6px;font-family:"Space Grotesk"}.step p{margin:0;color:var(--soft);line-height:1.55;font-size:.94rem}.trust{background:var(--lime);color:#12180b;padding:82px 0;position:relative;overflow:hidden}.trust:after{content:"W";font-family:"Space Grotesk";font-size:32rem;line-height:0;position:absolute;right:-30px;bottom:-50px;opacity:.07;font-weight:700}.trust-grid{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:26px}.trust-grid b{display:block;font:600 1.35rem/1.05 "Space Grotesk";margin-bottom:9px}.trust-grid span{font-size:.9rem;opacity:.75}
+    .final{padding:145px 0;text-align:center}.final h2{font:700 clamp(3rem,6vw,5.8rem)/.95 "Space Grotesk";letter-spacing:-.06em;max-width:780px;margin:15px auto 23px}.final p{color:var(--soft);max-width:490px;margin:0 auto 30px;line-height:1.65}.coming{margin-top:18px;color:#89938f;font-size:.8rem}.footer{border-top:1px solid var(--line);padding:28px 0;color:#8b9492;font-size:.82rem}.footer-in{display:flex;justify-content:space-between;gap:20px}.footer a:hover{color:var(--lime)}
+    .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}.reveal.on{opacity:1;transform:none}@media(max-width:780px){.aurora{left:0;right:0}.navlinks a:not(.mini-cta){display:none}.hero{grid-template-columns:1fr;padding-top:45px;min-height:0}.hero-art{height:390px;order:-1}.hero-mark{width:310px}.orbit{width:310px;height:310px}.signal.a{left:4%;top:47px}.signal.b{right:1%;bottom:50px}.vault-stage{min-height:0}.vault-sticky{position:relative;min-height:0;grid-template-columns:1fr;padding:84px 0}.vault-object{height:390px;order:-1}.vault-gateway{width:330px}.vault-readout{right:5%;bottom:3%}.intro,.how{grid-template-columns:1fr;gap:28px}.features,.trust-grid{grid-template-columns:1fr 1fr}.screens{grid-template-columns:1fr 1fr}.shot:nth-child(2){transform:none}.shot:nth-child(3){display:none}.motion-window{grid-template-columns:1fr}.motion-window video{min-height:0;height:auto;max-height:420px}section{padding:83px 0}.strip-in{justify-content:flex-start}.footer-in{display:block}.footer-in div+div{margin-top:10px}#vault-story{--vault:.9!important}}@media(max-width:480px){.wrap{width:min(100% - 28px,1160px)}.nav{height:74px}.hero h1{font-size:3.3rem}.features,.trust-grid,.screens{grid-template-columns:1fr}.screens .shot:nth-child(3){display:block}.hero-art{height:320px}.signal{font-size:.68rem}.signal.a{left:0}.signal.b{right:0}.navlinks{gap:10px}.mini-cta{padding:8px 12px}.strip-in span:nth-child(n+3){display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.aurora,.hero-mark,.orbit{animation:none}.reveal{opacity:1;transform:none;transition:none}.vault-door,.vault-logo,.hero-art:before{transition:none}#vault-story{--vault:.9!important}}
   </style>
 </head>
 <body>
-  <div class="hero">
-    <img src="images/logo_no_bg.jpg" alt="Wingman logo" class="logo">
-    <h1>Wingman</h1>
-    <p>Your phone knows too much. Wingman fixes that.</p>
-    <nav class="nav">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="legal.html">Returns, Refunds &amp; Warranty</a>
-      <a href="support.html">Support</a>
-    </nav>
-  </div>
-  <div class="main">
-    <div class="card">
-      <h2>Privacy-first vault</h2>
-      <p>All encryption happens locally on your device. We never see your photos, files, or messages. Not us, not anyone.</p>
-    </div>
-    <div class="card">
-      <h2>Biometric &amp; PIN protected</h2>
-      <p>Face ID, Touch ID, or a PIN keep your vault locked. A Duress PIN silently hides sensitive albums if you're under pressure.</p>
-    </div>
-    <div class="card">
-      <h2>Flexible subscriptions</h2>
-      <p>Free to start. Plus and Pro plans unlock unlimited vault size, AI scanning, Intruder Snapshot, and cloud backup. Cancel any time in the App Store or Google Play settings.</p>
-    </div>
-  </div>
-  <footer>
-    <p>&copy; 2026 Wingman. All rights reserved. &nbsp;|&nbsp; <a href="privacy.html">Privacy</a> &nbsp;|&nbsp; <a href="legal.html">Legal</a> &nbsp;|&nbsp; <a href="support.html">Support</a></p>
-  </footer>
+  <canvas id="vault-particles" aria-hidden="true"></canvas>
+  <div class="scroll-meter" aria-hidden="true"><span></span></div>
+  <div class="aurora"></div>
+  <header class="wrap nav"><a class="brand" href="/"><span class="brand-dot"></span>WINGMAN</a><nav class="navlinks"><a href="#features">Why Wingman</a><a href="/how-it-works">How it works</a><a href="/faq">FAQ</a><a href="/pricing">Pricing</a><a href="/privacy">Privacy</a><a class="mini-cta" href="#download">Get notified</a></nav></header>
+  <main>
+    <section class="wrap hero">
+      <div class="reveal"><div class="eyebrow">Privacy, on your terms</div><h1>Your private life.<br><span class="lime">In your pocket.</span></h1><p>Wingman gives your sensitive photos and videos a private, encrypted home — designed to feel effortless when it matters most.</p><div class="hero-actions"><a class="cta" href="#download">Meet your Wingman <span>→</span></a><a class="text-link" href="#walkthrough">Watch the walkthrough</a></div></div>
+      <div class="hero-art reveal"><div class="orbit"></div><img class="hero-mark" src="images/wingman-mark-rest.png" alt="Wingman winged vault emblem"><div class="signal a"><strong><span class="pulse"></span>Vault protected</strong>Private by design</div><div class="signal b"><strong>Encrypted locally</strong>Your device. Your control.</div></div>
+    </section>
+    <div class="strip"><div class="wrap strip-in"><span>Encrypted locally</span><span>Media stays on your device</span><span>Built for real life</span><span>Privacy without friction</span></div></div>
+    <section class="vault-story" aria-label="The Wingman vault experience"><div class="wrap vault-stage" id="vault-story"><div class="vault-sticky"><div class="vault-copy reveal"><div class="section-label">Scroll to unlock</div><h2 class="section-title">Step through your private vault.</h2><p>The door parts as you scroll. Beyond it is a calm, protected space for the personal media you choose to keep apart from the rest of your phone.</p></div><div class="vault-object" aria-hidden="true"><div class="vault-gateway"><div class="vault-core"></div><img class="vault-logo" src="images/wingman-mark-rest.png" alt=""><div class="vault-door left"></div><div class="vault-door right"></div><div class="vault-seam"></div></div><div class="vault-readout"><b>01 / VAULT UNLOCKED</b>Your private space is ready.</div></div></div></div></section>
+    <section id="features" class="wrap"><div class="intro reveal"><div><div class="section-label">Made to have your back</div><h2 class="section-title">Privacy should feel powerful, not complicated.</h2></div><p class="section-copy">Wingman makes the essentials feel natural: a separate vault, a familiar flow, and controls that put you in charge of your own content.</p></div>
+      <div class="features"><article class="card reveal"><svg viewBox="0 0 32 32"><rect x="6" y="13" width="20" height="14" rx="3"/><path d="M10 13V9a6 6 0 0 1 12 0v4M16 18v4"/></svg><h3>A vault that stays private</h3><p>Keep selected photos and videos behind the protection of a separate, encrypted space.</p></article><article class="card reveal"><svg viewBox="0 0 32 32"><path d="M6 24V12l10-6 10 6v12l-10 6z"/><path d="M16 18v8M6 12l10 6 10-6"/></svg><h3>Clear, personal control</h3><p>Bring in the content you choose, organise it simply, and stay in control of your private media.</p></article><article class="card reveal"><svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><path d="m12 16 3 3 6-7"/></svg><h3>Thoughtful protection</h3><p>Purpose-built privacy tools help you feel prepared without getting in the way of your day.</p></article></div>
+    </section>
+    <section class="showcase" id="walkthrough"><div class="wrap"><div class="intro reveal"><div><div class="section-label">A calmer way to protect what matters</div><h2 class="section-title">Made for the moments you want to keep to yourself.</h2></div><p class="section-copy">A focused experience with a bold, low-light interface that makes your private space feel distinctly yours.</p></div><div class="screens"><figure class="shot reveal"><img src="images/wingman-current.png" alt="Wingman vault home screen"><small>Your private space, one tap away.</small></figure><figure class="shot reveal"><img src="images/wingman-after-gear.png" alt="Wingman settings screen"><small>Privacy controls that stay easy to reach.</small></figure><figure class="shot reveal"><img src="images/wingman-relaunch-success.png" alt="Wingman app screen"><small>Designed for confidence, not clutter.</small></figure></div><div class="motion-window reveal"><div class="motion-copy"><div class="section-label">A glimpse of the flow</div><h3>Protection that moves at your pace.</h3><p>The site uses motion as a moment, not a distraction. On phones, this clip stays contained and never blocks the path to the essentials.</p></div><video class="ambient-video" muted playsinline loop preload="metadata" poster="images/wingman-current.png"><source src="images/wingman-cinematic.mp4" type="video/mp4"></video></div><div class="video-wrap reveal"><video controls playsinline preload="metadata" poster="images/wingman-current.png"><source src="images/wingman-demo.mp4" type="video/mp4">Your browser does not support video.</video></div></div></section>
+    <section class="wrap how"><div class="reveal"><div class="section-label">Simple by design</div><h2 class="section-title">A wingman when you need one.</h2></div><div class="steps reveal"><div class="step"><div class="n">01</div><div><h3>Create your private space</h3><p>Set up Wingman and choose the protection that works for you.</p></div></div><div class="step"><div class="n">02</div><div><h3>Bring in what you choose</h3><p>Select the photos and videos you want held apart from your everyday gallery.</p></div></div><div class="step"><div class="n">03</div><div><h3>Carry on with confidence</h3><p>Your private space is ready when you need it, without adding friction to your life.</p></div></div></div></section>
+    <section class="trust"><div class="wrap trust-grid"><div><b>Your content.</b><span>Chosen by you, controlled by you.</span></div><div><b>Your device.</b><span>Designed around local protection.</span></div><div><b>Your space.</b><span>A focused home for private media.</span></div><div><b>Your Wingman.</b><span>Privacy that feels natural.</span></div></div></section>
+    <section class="wrap final" id="download"><div class="section-label">Coming to the App Store & Google Play</div><h2>Some things are just for you.</h2><p>Get ready for a more private way to keep your personal photos and videos close — and out of sight.</p><a class="cta" href="mailto:support@theflipflop.shop?subject=Wingman%20launch%20updates">Keep me posted <span>→</span></a><div class="coming">Product availability and store links will appear here at launch.</div></section>
+  </main>
+  <footer class="footer"><div class="wrap footer-in"><div>© 2026 Wingman. Your partner in privacy.</div><div><a href="/privacy">Privacy policy</a>&nbsp;&nbsp;·&nbsp;&nbsp;<a href="/support.html">Support</a></div></div></footer>
+  <script>
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('on'); observer.unobserve(entry.target); } }), { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(element => observer.observe(element));
+
+    const vault = document.querySelector('#vault-story');
+    let ticking = false;
+    function renderMotion() {
+      const scrollTop = window.scrollY;
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      document.documentElement.style.setProperty('--scroll', total > 0 ? scrollTop / total : 0);
+      document.documentElement.style.setProperty('--hero-shift', Math.min(90, scrollTop * .16));
+      if (vault) {
+        const bounds = vault.getBoundingClientRect();
+        const range = Math.max(1, vault.offsetHeight - window.innerHeight);
+        const progress = Math.max(0, Math.min(1, -bounds.top / range));
+        vault.style.setProperty('--vault', progress);
+      }
+      ticking = false;
+    }
+    function requestMotion() { if (!ticking && !reducedMotion) { ticking = true; requestAnimationFrame(renderMotion); } }
+    if (!reducedMotion) { window.addEventListener('scroll', requestMotion, { passive: true }); window.addEventListener('resize', requestMotion); requestMotion(); }
+
+    if (!reducedMotion) {
+      const mediaObserver = new IntersectionObserver(entries => entries.forEach(entry => {
+        const video = entry.target;
+        if (entry.isIntersecting) video.play().catch(() => {}); else video.pause();
+      }), { threshold: .35 });
+      document.querySelectorAll('.ambient-video').forEach(video => mediaObserver.observe(video));
+
+      const favicon = document.querySelector('#site-favicon');
+      // Each stroke has a dense set of hand-positioned poses.  The same poses
+      // play in reverse on recovery, keeping the movement visually continuous.
+      const makeStroke = (frames) => frames.map((src, index) => ({
+        src, progress: index / (frames.length - 1)
+      }));
+      const lift = makeStroke([
+        'images/favicon-wing-rest.png',
+        'images/favicon-wing-up-15.png',
+        'images/favicon-wing-up-30.png',
+        'images/favicon-wing-up-45.png',
+        'images/favicon-wing-mid-up.png',
+        'images/favicon-wing-up-60.png',
+        'images/favicon-wing-up-80.png',
+        'images/favicon-wing-up.png'
+      ]);
+      const downstroke = makeStroke([
+        'images/favicon-wing-rest.png',
+        'images/favicon-wing-down-15.png',
+        'images/favicon-wing-down-30.png',
+        'images/favicon-wing-down-45.png',
+        'images/favicon-wing-mid-down.png',
+        'images/favicon-wing-down-60.png',
+        'images/favicon-wing-down-80.png',
+        'images/favicon-wing-down.png'
+      ]);
+      const faviconFrames = [
+        ...lift,
+        ...lift.slice(0, -1).reverse(),
+        ...downstroke.slice(1),
+        ...downstroke.slice(0, -1).reverse()
+      ];
+      // The derivative of cubic-bezier(.42, 0, .58, 1): linger naturally at
+      // each reversal, then travel quickest through the centre of a stroke.
+      const bezierSpeed = (t) => 6 * t * (1 - t);
+      const frameDelay = (progress) => {
+        const normalisedSpeed = Math.min(1, bezierSpeed(progress) / 1.5);
+        return Math.round(70 + (1 - normalisedSpeed) * 125);
+      };
+      let faviconFrame = 0;
+      let faviconTimer;
+      const animateFavicon = () => {
+        clearTimeout(faviconTimer);
+        if (document.hidden || !favicon) return;
+        const playFrame = () => {
+          const frame = faviconFrames[faviconFrame];
+          favicon.href = `${frame.src}?frame=${faviconFrame}`;
+          faviconFrame = (faviconFrame + 1) % faviconFrames.length;
+          faviconTimer = window.setTimeout(playFrame, frameDelay(frame.progress));
+        };
+        playFrame();
+      };
+      document.addEventListener('visibilitychange', animateFavicon);
+      animateFavicon();
+
+      const canvas = document.querySelector('#vault-particles');
+      const context = canvas.getContext('2d');
+      const motes = Array.from({ length: window.innerWidth < 780 ? 18 : 34 }, (_, index) => ({
+        x: Math.random(), y: Math.random(), size: 1 + Math.random() * 2.4,
+        speed: .00012 + Math.random() * .00028, drift: (Math.random() - .5) * .00018,
+        phase: Math.random() * Math.PI * 2, gold: index % 3 === 0
+      }));
+      let previousScroll = window.scrollY;
+      let scrollEnergy = 0;
+      function sizeParticles() { canvas.width = window.innerWidth * devicePixelRatio; canvas.height = window.innerHeight * devicePixelRatio; canvas.style.cssText = 'position:fixed;inset:0;z-index:1;width:100%;height:100%;pointer-events:none'; context.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0); }
+      let particleAnimationId = 0;
+      function drawParticles(time) {
+        const now = window.scrollY;
+        scrollEnergy = Math.min(1, scrollEnergy * .92 + Math.abs(now - previousScroll) / 130);
+        previousScroll = now;
+        context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        motes.forEach(mote => {
+          mote.y -= mote.speed * (1 + scrollEnergy * 3);
+          mote.x += mote.drift + Math.sin(time * .0007 + mote.phase) * .00008;
+          if (mote.y < -.05) { mote.y = 1.05; mote.x = .18 + Math.random() * .64; }
+          if (mote.x < 0) mote.x = 1; if (mote.x > 1) mote.x = 0;
+          const x = mote.x * window.innerWidth;
+          const y = mote.y * window.innerHeight;
+          const alpha = .13 + scrollEnergy * .42;
+          context.beginPath();
+          context.fillStyle = mote.gold ? `rgba(211,255,104,${alpha})` : `rgba(77,230,245,${alpha})`;
+          context.shadowBlur = 14 + scrollEnergy * 12;
+          context.shadowColor = context.fillStyle;
+          context.arc(x, y, mote.size + scrollEnergy * 1.4, 0, Math.PI * 2);
+          context.fill();
+        });
+        context.shadowBlur = 0;
+        if (!document.hidden) particleAnimationId = requestAnimationFrame(drawParticles);
+      }
+      function startParticles() { if (!particleAnimationId && !document.hidden) particleAnimationId = requestAnimationFrame(drawParticles); }
+      sizeParticles();
+      window.addEventListener('resize', sizeParticles, { passive: true });
+      document.addEventListener('visibilitychange', () => { if (document.hidden) { cancelAnimationFrame(particleAnimationId); particleAnimationId = 0; } else startParticles(); });
+      startParticles();
+    }
+  </script>
 </body>
 </html>

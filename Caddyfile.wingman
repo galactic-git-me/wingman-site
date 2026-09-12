@@ -1,0 +1,29 @@
+wingman.theflipflop.shop {
+    encode zstd gzip
+
+    redir /beta /beta/ 308
+    redir /api /api/ 308
+    redir /api-beta /api-beta/ 308
+
+    # API paths are stripped before reaching Node, so the existing API routes
+    # (/health, /support, /admin, etc.) do not need to know about the prefix.
+    handle_path /api-beta/* {
+        reverse_proxy 127.0.0.1:8788
+    }
+    handle_path /api/* {
+        reverse_proxy 127.0.0.1:8787
+    }
+
+    # Beta is deliberately isolated from the production document root.
+    handle_path /beta/* {
+        root * /var/www/wingman-beta
+        try_files {path} {path}.html {path}/
+        file_server
+    }
+
+    handle {
+        root * /var/www/wingman
+        try_files {path} {path}.html {path}/
+        file_server
+    }
+}
